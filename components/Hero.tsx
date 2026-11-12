@@ -19,13 +19,13 @@ export default function Hero() {
               </p>
             </FadeIn>
 
-            <FadeIn delay={0.2}>
+            
               <h1 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-white md:text-7xl lg:text-8xl">
                 Premium Mobile
                 <br />
                 Detailing
               </h1>
-            </FadeIn>
+            
 
             <FadeIn delay={0.3}>
               <p className="mt-6 text-lg text-gray-300 md:text-xl">
