@@ -1,3 +1,4 @@
+
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#0B0B0B]">
@@ -8,8 +9,8 @@ export default function Footer() {
         <div className="text-center">
 
           <h2 className="text-3xl font-bold tracking-tight text-white">
-            SHEF <span className="text-yellow-400">MOBILE</span> DETAILING
-          </h2>
+      SHEF <span className="text-yellow-400">MOBILE</span> DETAILING
+       </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-gray-400">
             Professional mobile detailing delivered to your home or workplace
@@ -67,7 +68,7 @@ export default function Footer() {
             </a>
 
             <a
-         href="https://app.squareup.com/appointments/book/xz4vivgeaj8bsr/LYCKAKYQDWG1T/start"
+         href="/booking"
            target="_blank"
             rel="noopener noreferrer"
            className="transition hover:text-yellow-400"

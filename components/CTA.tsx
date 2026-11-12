@@ -23,7 +23,7 @@ export default function CTA() {
 
             {/* Book Now */}
             <a
-              href="https://app.squareup.com/appointments/book/xz4vivgeaj8bsr/LYCKAKYQDWG1T/start"
+              href="/booking"
               target="_blank"
              rel="noopener noreferrer"
               className="rounded-full bg-yellow-500 px-10 py-4 font-semibold text-black transition-all duration-300 active:scale-95 hover:scale-105 hover:bg-yellow-400"

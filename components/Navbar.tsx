@@ -1,17 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const closeMenu = () => {
     setIsOpen(false);
   };
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full bg-black/40 backdrop-blur-md">
+    <header
+      className={`fixed left-0 top-0 z-50 w-full backdrop-blur-md transition-all duration-300 ${
+        scrolled
+          ? "border-b border-white/10 bg-black/90 shadow-lg"
+          : "bg-black/40"
+      }`}
+    >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
         {/* Logo */}
         <div>
@@ -51,7 +72,7 @@ export default function Navbar() {
           </a>
 
           <a
-            href="https://app.squareup.com/appointments/book/xz4vivgeaj8bsr/LYCKAKYQDWG1T/start"
+            href="/booking"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-yellow-500 px-5 py-2 font-semibold text-black transition-all duration-300 hover:scale-105 hover:bg-yellow-400 active:scale-95"
@@ -109,7 +130,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="https://app.squareup.com/appointments/book/xz4vivgeaj8bsr/LYCKAKYQDWG1T/start"
+              href="/booking"
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}
