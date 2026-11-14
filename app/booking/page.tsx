@@ -1,5 +1,12 @@
 
+import type { Metadata } from "next";
 import BookingForm from "../../components/BookingForm";
+
+export const metadata: Metadata = {
+  title: "Book Mobile Car Detailing | SHEF Mobile Detailing",
+  description:
+    "Book professional mobile car detailing in Chicagoland. Choose your interior, exterior, or full detailing service and request an appointment.",
+};
 
 export default function BookingPage() {
   return (

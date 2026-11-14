@@ -366,6 +366,34 @@ export async function POST(request: Request) {
       );
     }
 
+    // Prevent duplicate pending requests
+const { data: existingRequest, error: duplicateCheckError } =
+  await supabase
+    .from("bookings")
+    .select("id")
+    .eq("customer_phone", phoneDigits)
+    .eq("appointment_date", date)
+    .eq("appointment_time", appointmentTime)
+    .eq("status", "pending")
+    .limit(1);
+
+if (duplicateCheckError) {
+  return NextResponse.json(
+    { error: "Could not verify your request. Please try again." },
+    { status: 500 }
+  );
+}
+
+if (existingRequest && existingRequest.length > 0) {
+  return NextResponse.json(
+    {
+      error:
+        "You already have a pending request for this date and time.",
+    },
+    { status: 409 }
+  );
+}
+
     // Save appointment request
     const { error } = await supabase
       .from("bookings")

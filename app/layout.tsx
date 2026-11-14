@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -13,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://shefdetailing.com"),
   title: "SHEF Mobile Detailing | Mobile Car Detailing in Chicagoland",
   description:
     "Professional mobile car detailing in Chicagoland. Interior, exterior, and full detailing services delivered to your home or workplace.",
@@ -26,6 +28,7 @@ export const metadata: Metadata = {
     "SHEF Mobile Detailing",
   ],
   openGraph: {
+    url: "https://shefdetailing.com",
     title: "SHEF Mobile Detailing | Mobile Car Detailing in Chicagoland",
     description:
       "Professional mobile car detailing delivered to your home or workplace throughout Chicagoland.",

@@ -450,15 +450,23 @@ const validTime =
       });
 
       if (!response.ok) {
-        throw new Error("Unable to submit booking");
-      }
+  const data = await response.json().catch(() => null);
 
-      setSubmitSuccess(true);
-    } catch {
-      setSubmitError(
-        "Something went wrong. Please try again."
-      );
-    } finally {
+  throw new Error(
+    typeof data?.error === "string"
+      ? data.error
+      : "Unable to submit booking. Please try again."
+  );
+}
+
+setSubmitSuccess(true);
+} catch (error) {
+  setSubmitError(
+    error instanceof Error
+      ? error.message
+      : "Something went wrong. Please try again."
+  );
+} finally {
       setIsSubmitting(false);
     }
   }
