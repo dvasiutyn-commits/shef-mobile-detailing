@@ -457,19 +457,40 @@ const validTime =
       ? data.error
       : "Unable to submit booking. Please try again."
   );
-}
+      }
+
 
 setSubmitSuccess(true);
-} catch (error) {
-  setSubmitError(
-    error instanceof Error
-      ? error.message
-      : "Something went wrong. Please try again."
-  );
-} finally {
-      setIsSubmitting(false);
-    }
+
+// Track Lead only after a successful booking and cookie consent
+try {
+  if (
+    localStorage.getItem("shef-cookie-consent") === "accepted"
+  ) {
+    const fbq = (
+      window as Window & {
+        fbq?: (...args: unknown[]) => void;
+      }
+    ).fbq;
+
+    fbq?.("track", "Lead");
   }
+} catch {
+  // Tracking errors must not affect successful bookings.
+}
+
+  } catch (error) {
+    setSubmitError(
+      error instanceof Error
+        ? error.message
+        : "Something went wrong. Please try again."
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+}
+
+
 
   const inputClass =
     "w-full rounded-xl border border-zinc-700 bg-black p-4 text-white focus:border-yellow-500 focus:outline-none";
